@@ -84,33 +84,60 @@ The backend Express application listens on port `5000` and serves three SSE (Ser
 
 ---
 
+## 📁 Directory Structure
+
+*   **`backend/`**: Secure Express proxy server using Node.js to communicate with Groq APIs.
+*   **`frontend/`**: Single Page React application built with Vite and TailwindCSS, including a custom production static file server (`prod-server.js`).
+
+---
+
 ## 🚀 Getting Started
 
-### 1. Installation
-Install project dependencies for both client and backend operations:
+### 1. Backend Setup & Run
+Open a terminal and navigate to the `backend/` directory:
 ```bash
-npm install
+cd backend
 ```
-
-### 2. Configure Environment Variables
-Create a `.env` file in the root directory:
+Create a `.env` file containing:
 ```env
 PORT=5000
-GROQ_API_KEY=gsk_your_actual_groq_api_key_here
+GROQ_API_KEY=your_groq_api_key
 ```
-
-### 3. Spin Up the Backend Server
-Run the Express proxy server:
+Install dependencies and start the proxy server:
 ```bash
-npm run server
+npm install
+npm start
 ```
-*Console output should verify:*
-`TRiO AI Backend running on port 5000`
-`Centralized Model Config: openai/gpt-oss-120b`
+The backend server will run at `http://localhost:5000`.
 
-### 4. Spin Up the Frontend Client
-In a separate terminal, launch the Vite dev server:
+### 2. Frontend Setup & Run
+Open a separate terminal and navigate to the `frontend/` directory:
 ```bash
+cd frontend
+```
+Install dependencies and start the local development client:
+```bash
+npm install
 npm run dev
 ```
-Open `http://localhost:5173` in your browser.
+Open `http://localhost:5173` in your browser. (The local client will proxy API requests to `http://localhost:5000` automatically).
+
+---
+
+## ☁️ Production Deployment (e.g., Render)
+
+### Backend Deployment (Web Service)
+*   **Root Directory**: `backend`
+*   **Build Command**: `npm install`
+*   **Start Command**: `npm start`
+*   **Environment Variables**:
+    *   `GROQ_API_KEY`: Your actual Groq API key (kept secure on backend).
+
+### Frontend Deployment (Static Site or Web Service)
+*   **Root Directory**: `frontend`
+*   **Build Command**: `npm run build`
+*   **Publish Directory**: `dist`
+*   **Start Command** (if Web Service): `npm start`
+*   **Environment Variables**:
+    *   `VITE_API_URL`: Set this to your backend service's URL (e.g., `https://trioai.onrender.com` or `https://trioai.up.railway.app`). Do not append a trailing slash.
+
