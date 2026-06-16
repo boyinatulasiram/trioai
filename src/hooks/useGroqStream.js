@@ -17,7 +17,8 @@ export function useGroqStream() {
             { role: 'user', content: userPromptOrMessages }
           ];
 
-      const response = await fetch(endpoint, {
+      const apiUrl = import.meta.env.VITE_API_URL || '';
+      const response = await fetch(`${apiUrl}${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
