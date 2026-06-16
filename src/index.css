@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --color-slate-50: var(--bg-color);
+  --color-navy-900: var(--bg-color);
+  --color-navy-800: var(--glass-bg);
+  
+  --color-cyan-500: #00F0FF;
+  --color-cyan-400: #22D3EE;
+  
+  --color-purple-500: #B026FF;
+  --color-purple-400: #8B5CF6;
+
+  --color-blue-500: #3B82F6;
+  
+  --font-sans: "Inter", "system-ui", "sans-serif";
+}
+
+:root {
+  --bg-color: #F8FAFC;
+  --surface-color: #FFFFFF;
+  --surface-secondary: #F1F5F9;
+  
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.80);
+  --glass-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+  
+  --text-main: #0F172A;
+  --text-muted: #475569;
+  --text-light: #94A3B8;
+  
+  --border-color: #E2E8F0;
+  
+  --input-bg: #FFFFFF;
+  --input-border: #E2E8F0;
+  
+  --button-bg: #FFFFFF;
+  --button-border: #E2E8F0;
+  --button-text: #475569;
+  
+  --writer-paper-bg: #FCFAF7; /* Warm Paper */
+  --writer-paper-border: #E8E2D9;
+  --writer-accent: #8B5CF6;
+}
+
+@utility glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+@utility glass-button {
+  background: var(--button-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--button-border);
+  color: var(--button-text);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background: rgba(59, 130, 246, 0.05);
+    border-color: rgba(59, 130, 246, 0.25);
+    transform: translateY(-1px);
+  }
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: "Inter", "system-ui", "sans-serif";
+}
+
+/* Custom scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-light);
+  border-radius: 9999px;
+  transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
